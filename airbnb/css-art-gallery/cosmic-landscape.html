@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Landscape - CSS Art</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .canvas {
+            width: 800px;
+            height: 600px;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animated Background */
+        .background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                #ff6b6b 0%, 
+                #4ecdc4 25%, 
+                #45b7d1 50%, 
+                #96ceb4 75%, 
+                #ffeaa7 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Mountains */
+        .mountain {
+            position: absolute;
+            bottom: 0;
+        }
+
+        .mountain-1 {
+            width: 0;
+            height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-bottom: 200px solid #2c3e50;
+            left: 50px;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+        }
+
+        .mountain-2 {
+            width: 0;
+            height: 0;
+            border-left: 120px solid transparent;
+            border-right: 120px solid transparent;
+            border-bottom: 150px solid #34495e;
+            left: 200px;
+            z-index: 2;
+        }
+
+        .mountain-3 {
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent;
+            border-bottom: 120px solid #3c5aa6;
+            right: 100px;
+            z-index: 3;
+        }
+
+        /* Sun */
+        .sun {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #ffd93d 0%, #ff9800 100%);
+            border-radius: 50%;
+            top: 80px;
+            right: 100px;
+            box-shadow: 0 0 50px rgba(255, 217, 61, 0.8);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Clouds */
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .cloud-1 {
+            width: 80px;
+            height: 30px;
+            top: 100px;
+            left: 150px;
+            animation-delay: 0s;
+        }
+
+        .cloud-2 {
+            width: 60px;
+            height: 25px;
+            top: 120px;
+            left: 400px;
+            animation-delay: 2s;
+        }
+
+        .cloud-3 {
+            width: 70px;
+            height: 28px;
+            top: 90px;
+            left: 600px;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Geometric Shapes */
+        .shape {
+            position: absolute;
+            opacity: 0.7;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-bottom: 40px solid #e74c3c;
+            top: 200px;
+            left: 100px;
+            animation: rotate 6s linear infinite;
+        }
+
+        .circle {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #9b59b6, #3498db);
+            border-radius: 50%;
+            top: 300px;
+            right: 150px;
+            animation: bounce 3s ease-in-out infinite;
+        }
+
+        .square {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            top: 250px;
+            left: 300px;
+            transform: rotate(45deg);
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(45deg); }
+            to { transform: rotate(405deg); }
+        }
+
+        /* Particles */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: sparkle 3s ease-in-out infinite;
+        }
+
+        .particle-1 { top: 150px; left: 200px; animation-delay: 0s; }
+        .particle-2 { top: 180px; left: 350px; animation-delay: 1s; }
+        .particle-3 { top: 120px; left: 500px; animation-delay: 2s; }
+        .particle-4 { top: 200px; left: 650px; animation-delay: 0.5s; }
+        .particle-5 { top: 160px; left: 450px; animation-delay: 1.5s; }
+
+        @keyframes sparkle {
+            0%, 100% { 
+                opacity: 0; 
+                transform: scale(0.5);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.2);
+            }
+        }
+
+        /* Water/Lake */
+        .water {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(to bottom, 
+                rgba(52, 152, 219, 0.8) 0%, 
+                rgba(41, 128, 185, 0.9) 100%);
+            animation: wave 4s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(1.1); }
+        }
+
+        /* Title */
+        .title {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.9);
+            font-family: 'Arial', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); }
+            to { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas">
+        <div class="background"></div>
+        
+        <div class="title">Cosmic Landscape</div>
+        
+        <!-- Mountains -->
+        <div class="mountain mountain-1"></div>
+        <div class="mountain mountain-2"></div>
+        <div class="mountain mountain-3"></div>
+        
+        <!-- Sun -->
+        <div class="sun"></div>
+        
+        <!-- Clouds -->
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+        
+        <!-- Geometric Shapes -->
+        <div class="shape triangle"></div>
+        <div class="shape circle"></div>
+        <div class="shape square"></div>
+        
+        <!-- Particles -->
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+        <div class="particle particle-3"></div>
+        <div class="particle particle-4"></div>
+        <div class="particle particle-5"></div>
+        
+        <!-- Water -->
+        <div class="water"></div>
+    </div>
+</body>
+</html>

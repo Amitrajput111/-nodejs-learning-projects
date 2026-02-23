@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Art Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .gallery-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+            animation: titlePulse 3s ease-in-out infinite;
+        }
+
+        .gallery-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .art-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+        }
+
+        .art-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .art-preview {
+            width: 300px;
+            height: 200px;
+            border-radius: 15px;
+            margin: 0 auto 20px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .art-card:hover .art-preview {
+            transform: scale(1.05);
+        }
+
+        .cosmic-preview {
+            background: linear-gradient(45deg, #ff6b6b 0%, #4ecdc4 25%, #45b7d1 50%, #96ceb4 75%, #ffeaa7 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cosmic-preview::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, #ffd93d 0%, #ff9800 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 217, 61, 0.6);
+        }
+
+        .cosmic-preview::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 40px solid transparent;
+            border-right: 40px solid transparent;
+            border-bottom: 60px solid #2c3e50;
+        }
+
+        .geometric-preview {
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .geometric-preview::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff0080, #ff8c00);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            animation: spin 4s linear infinite;
+        }
+
+        .geometric-preview::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(45deg, #00ffff, #0080ff);
+            transform: rotate(45deg);
+        }
+
+        @keyframes spin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .art-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .art-description {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .view-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .view-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-title {
+                font-size: 2.5rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .art-preview {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery-header">
+        <h1 class="gallery-title">CSS Art Gallery</h1>
+        <p class="gallery-subtitle">Beautiful Images Created with HTML & CSS</p>
+    </div>
+
+    <div class="gallery-grid">
+        <div class="art-card" onclick="window.open('cosmic-landscape.html', '_blank')">
+            <div class="art-preview cosmic-preview"></div>
+            <h2 class="art-title">Cosmic Landscape</h2>
+            <p class="art-description">
+                A vibrant animated landscape featuring flowing gradients, floating mountains, 
+                a glowing sun, drifting clouds, and sparkling particles. All created with pure CSS animations.
+            </p>
+            <a href="cosmic-landscape.html" class="view-button" target="_blank">View Artwork</a>
+        </div>
+
+        <div class="art-card" onclick="window.open('geometric-abstract.html', '_blank')">
+            <div class="art-preview geometric-preview"></div>
+            <h2 class="art-title">Abstract Geometry</h2>
+            <p class="art-description">
+                A modern abstract composition with rotating hexagons, pulsing diamonds, 
+                floating shapes, and dynamic particles on a grid background.
+            </p>
+            <a href="geometric-abstract.html" class="view-button" target="_blank">View Artwork</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Created with ❤️ using HTML & CSS • No JavaScript Required</p>
+    </div>
+</body>
+</html>

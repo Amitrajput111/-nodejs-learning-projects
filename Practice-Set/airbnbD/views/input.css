@@ -1,0 +1,46 @@
+/* Add your CSS code here */
+
+/* Example dynamic style */
+.dynamic-class {
+  color: #333;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 1.2rem;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+<html>
+  <head><title>Practise Set</title></head>
+  <body>
+    <h1>Welcome to Calculator</h1>
+    <a href="/calculator">Go To Calculator</a>
+  </body>  
+</html>  
