@@ -1,24 +1,33 @@
-// Core Module
-const path = require('path');
-
-// External Module
 const express = require('express');
+const { addHome } = require('../data/homes');
+
 const hostRouter = express.Router();
 
-// Local Module
-const rootDir = require("../utils/pathUtil");
+hostRouter.get('/add-home', (req, res) => {
+  res.render('addHome', {
+    pageTitle: 'Add Home',
+    error: null,
+    houseName: '',
+  });
+});
 
-hostRouter.get("/add-home", (req, res, next) => {
-  res.render('addHome', {pageTitle: 'Add Home to airbnb'});
-})
+hostRouter.post('/add-home', (req, res) => {
+  const houseName = (req.body.houseName || '').trim();
 
-const registeredHomes = [];
+  if (!houseName) {
+    return res.status(400).render('addHome', {
+      pageTitle: 'Add Home',
+      error: 'Please enter a house name.',
+      houseName: '',
+    });
+  }
 
-hostRouter.post("/add-home", (req, res, next) => {
-  console.log('Home Registration successful for:', req.body, req.body.houseName);
-  registeredHomes.push({houseName: req.body.houseName});
-  res.render('homeAdded', {pageTitle: 'Home Added Successfully'});
-})
+  addHome({ houseName });
+  res.redirect('/host/home-added');
+});
 
-exports.hostRouter = hostRouter;
-exports.registeredHomes = registeredHomes;
+hostRouter.get('/home-added', (req, res) => {
+  res.render('homeAdded', { pageTitle: 'Home Added Successfully' });
+});
+
+module.exports = { hostRouter };

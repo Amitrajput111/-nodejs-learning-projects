@@ -1,16 +1,17 @@
 {
   "name": "airbnb",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
     "tailwind": "tailwindcss -i ./views/input.css -o ./public/output.css --watch",
-    "start": "nodemon app.js & npm run tailwind"
+    "build:css": "tailwindcss -i ./views/input.css -o ./public/output.css",
+    "start": "npm run build:css && nodemon app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "Airbnb-style home listing practice app",
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.13",
     "autoprefixer": "^10.4.21",

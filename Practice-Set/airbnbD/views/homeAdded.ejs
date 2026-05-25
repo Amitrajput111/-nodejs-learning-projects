@@ -2,12 +2,27 @@
   </head>
   <body>
     <%- include('partials/nav') %>
-    <main class="container mx-auto mt-8 p-4">
-      <div class="bg-white shadow-md rounded-lg p-6 text-center">
-        <h1 class="text-3xl font-bold text-red-500 mb-4">Home Registered Successfully</h1>
-        <p class="text-lg text-gray-600">Your home has been added to our listings.</p>
-        <a href="/" class="inline-block mt-6 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-400 transition duration-300">Return to Home</a>
-      </div>
+    <main class="container mx-auto px-4 py-10 max-w-xl">
+      <section class="bg-white shadow-lg rounded-lg p-8 text-center">
+        <h1 class="text-3xl font-bold text-red-500 mb-4">Home Registered</h1>
+        <p class="text-lg text-gray-600 mb-8">
+          Your home has been added to our listings.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a
+            href="/"
+            class="bg-red-500 text-white py-2 px-5 rounded-md hover:bg-red-600 transition duration-200"
+          >
+            View all homes
+          </a>
+          <a
+            href="/host/add-home"
+            class="bg-gray-100 text-gray-800 py-2 px-5 rounded-md hover:bg-gray-200 transition duration-200"
+          >
+            Add another home
+          </a>
+        </div>
+      </section>
     </main>
   </body>
 </html>
